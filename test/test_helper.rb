@@ -1,4 +1,14 @@
-$LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'prova_web5'
+ENV['RACK_ENV'] = 'test'
+
+require 'simplecov'
+SimpleCov.start
 
 require 'minitest/autorun'
+require 'minitest/pride'
+require 'rack/test'
+
+include Rack::Test::Methods
+
+def app
+  Sinatra::Application
+end
