@@ -1,10 +1,21 @@
-require "bundler/gem_tasks"
-require "rake/testtask"
+task default: ['test:all']
 
-Rake::TestTask.new(:test) do |t|
-  t.libs << "test"
-  t.libs << "lib"
-  t.test_files = FileList['test/**/*_test.rb']
+namespace :test do
+  desc 'Run the tests'
+  task :all do
+    Rake::Task['test:units'].invoke
+    Rake::Task['test:functional'].invoke
+  end
+
+  desc 'Run the units test'
+  task :units do
+    ruby 'test/units/velocity_test.rb'
+    ruby 'test/units/weight_test.rb'
+  end
+
+  desc 'Run the functionals test'
+  task :functional do
+    ruby 'test/functionals/velocity_test.rb'
+    ruby 'test/functionals/weight_test.rb'
+  end
 end
-
-task :default => :test
