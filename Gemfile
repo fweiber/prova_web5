@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in prova_web5.gemspec
-gemspec
+gem 'minitest', '~> 5.9'
+gem 'simplecov', '~> 0.12.0'
+gem 'rubocop', '~> 0.42.0'
+gem 'brakeman', '~> 3.3', '>= 3.3.5'
+gem 'fasterer', '~> 0.3.2'
+gem 'sinatra', '~> 1.4', '>= 1.4.7'
+gem 'rack-test', '~> 0.6.3'
+gem 'rake', '~> 11.2', '>= 11.2.2'
