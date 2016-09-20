@@ -11,6 +11,11 @@ class App < Sinatra::Base
     "Hello, world! This is temp app.\n"
   end
 
+  not_found do
+    status 404
+    "404 - not found.\n"
+  end
+
   get '/:conversion_type/:origin_unit/:value/:destination_unit' do
     content_type:json
     if params[:conversion_type] == 'velocity'
