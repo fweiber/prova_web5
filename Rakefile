@@ -19,6 +19,8 @@ namespace :test do
   desc 'Run the functionals test'
   task :functional do
     ruby 'test/functionals/velocity_test.rb'
+    ruby 'test/functionals/velocity_test_2.rb'
     ruby 'test/functionals/weight_test.rb'
+    ruby 'test/functionals/weight_test_2.rb'
   end
 end
