@@ -17,7 +17,7 @@ class App < Sinatra::Base
       temp_convertion = Velocity.new(params[:value].to_f, params[:origin_unit])
       { temp: temp_convertion.send(params[:destination_unit]) }.to_json
     elsif params[:conversion_type] == 'weight'
-      temp_convertion = Velocity.new(params[:value].to_f, params[:origin_unit])
+      temp_convertion = Weight.new(params[:value].to_f, params[:origin_unit])
       { temp: temp_convertion.send(params[:destination_unit]) }.to_json
     else
       { temp: 0 }.to_json
