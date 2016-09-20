@@ -10,7 +10,10 @@ namespace :test do
   desc 'Run the units test'
   task :units do
     ruby 'test/units/velocity_test.rb'
+    ruby 'test/units/velocity_test_2.rb'
     ruby 'test/units/weight_test.rb'
+    ruby 'test/units/weight_test_2.rb'
+    ruby 'test/units/weight_test_3.rb'
   end
 
   desc 'Run the functionals test'
