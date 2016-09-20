@@ -1,26 +1,28 @@
+require 'rake/testtask'
 task default: ['test:all']
 
-namespace :test do
-  desc 'Run the tests'
-  task :all do
-    Rake::Task['test:units'].invoke
-    Rake::Task['test:functional'].invoke
-  end
+Rake::TestTask.new('test:units') do |t|
+  t.libs = ['lib', 'test']
+  t.warning = true
+  t.verbose = true
+  t.test_files = FileList['test/units/*_test.rb']
+end
 
-  desc 'Run the units test'
-  task :units do
-    ruby 'test/units/velocity_test.rb'
-    ruby 'test/units/velocity_test_2.rb'
-    ruby 'test/units/weight_test.rb'
-    ruby 'test/units/weight_test_2.rb'
-    ruby 'test/units/weight_test_3.rb'
-  end
+Rake::TestTask.new('test:functionals') do |t|
+  t.libs = ['lib', 'test']
+  t.warning = true
+  t.verbose = true
+  t.test_files = FileList['test/functionals/*_test.rb']
+end
 
-  desc 'Run the functionals test'
-  task :functional do
-    ruby 'test/functionals/velocity_test.rb'
-    ruby 'test/functionals/velocity_test_2.rb'
-    ruby 'test/functionals/weight_test.rb'
-    ruby 'test/functionals/weight_test_2.rb'
-  end
+Rake::TestTask.new('test:all') do |t|
+  t.libs = ['lib', 'test']
+  t.warning = true
+  t.verbose = true
+  t.test_files = FileList['test/**/*_test.rb']
+end
+
+desc 'Run rubocop'
+task :rubocop do
+  sh 'rubocop'
 end
